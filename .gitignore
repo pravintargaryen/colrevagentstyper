@@ -1,0 +1,73 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# ---- Virtual Environments ----
+venv/
+env/
+.venv/
+ENV/
+
+# ---- Environment & Config ----
+.env
+.env.*
+!.env.example
+
+# ---- OS / IDE Files ----
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# ---- Logs ----
+*.log
+logs/
+*.out
+
+# ---- Compiled or Cache Files ----
+*.egg-info/
+.eggs/
+build/
+dist/
+pip-wheel-metadata/
+*.manifest
+*.spec
+
+# ---- Data or Temp Files ----
+*.db
+*.sqlite3
+*.sqlite
+*.json
+data/
+tmp/
+cache/
+__temp__/
+
+# ---- Notebooks ----
+.ipynb_checkpoints/
+
+# ---- Uvicorn / FastAPI specific ----
+*.pid
+*.sock
+
+# ---- DSPy / AI ----
+dspy_cache/
+openai_cache/
+__dspy__/
+
+# ---- Tests ----
+.coverage
+htmlcov/
+.tox/
+pytest_cache/
+.pytest_cache/
+
+# ---- Misc ----
+*.bak
+*.orig
+*.tmp
+mlruns/
