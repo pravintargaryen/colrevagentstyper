@@ -52,13 +52,13 @@ venv\Scripts\activate
 source venv/bin/activate
 ```
 
-3. ** Install Dependencies**
+3. **Install Dependencies**
 
 ```
 pip install -r requirements.txt
 ```
 
-4. ** Add your API keys **
+4. **Add your API keys**
 
 Create a .env file in the project root:
 
@@ -67,7 +67,7 @@ GOOGLE_API_KEY=your_google_or_gemini_api_key_here
 GEMINI_API_KEY=your_gemini_api_key_here
 ```
 
-5. ** ⚡ Running the Pipeline **
+5. **⚡Running the Pipeline**
 
 ```
 python main.py "What are the recent advances in gene therapy for hemophilia?"
