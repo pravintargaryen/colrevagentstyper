@@ -37,38 +37,38 @@ The output is a **rich CLI experience** with colored tables and panels.
 
 1. **Clone the repository**
 
-```bash
+```
 git clone https://github.com/yourusername/systematic-review-agent.git
 cd systematic-review-agent
-```bash
+```
 
 2. **Create and activate a virtual environment**
 
-```bash
+```
 python -m venv venv
 # Windows
 venv\Scripts\activate
 # macOS / Linux
 source venv/bin/activate
-```bash
+```
 
-3. ** Install Dependencies**
+3. **Install Dependencies**
 
-```bash
+```
 pip install -r requirements.txt
-```bash
+```
 
-4. ** Add your API keys **
+4. **Add your API keys**
 
 Create a .env file in the project root:
 
-```bash
+```
 GOOGLE_API_KEY=your_google_or_gemini_api_key_here
 GEMINI_API_KEY=your_gemini_api_key_here
-```bash
+```
 
-5. ** ⚡ Running the Pipeline **
+5. **⚡Running the Pipeline**
 
-```bash
+```
 python main.py "What are the recent advances in gene therapy for hemophilia?"
-```bash
+```
