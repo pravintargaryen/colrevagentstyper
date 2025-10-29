@@ -48,6 +48,11 @@ class ProblemFormulationAgent(dspy.Signature):
     query: str = dspy.InputField()
     refined_query: str = dspy.OutputField(desc="A refined version of the research question.")
 
+class QueryBuilderAgent(dspy.Signature):
+    """Convert a refined research question into a structured Boolean search query."""
+    refined_query: str = dspy.InputField()
+    search_query: str = dspy.OutputField(desc="A Boolean-style search query suitable for Crossref, e.g. 'gene therapy' AND hemophilia.")
+    
 
 class DataRetrievalAgent(dspy.Signature):
     """Retrieve relevant papers from Crossref API."""
@@ -81,6 +86,7 @@ class DataSynthesisAgent(dspy.Signature):
 #  Create DSPy ReAct Agents
 # ----------------------------
 problem_agent = dspy.ReAct(ProblemFormulationAgent, tools=[])
+query_builder_agent = dspy.ReAct(QueryBuilderAgent, tools=[])
 retrieval_agent = dspy.ReAct(DataRetrievalAgent, tools=[crossref_search_json])
 prescreen_agent = dspy.ReAct(DataPrescreenAgent, tools=[])
 pdf_agent = dspy.ReAct(PDFRetrievalAgent, tools=[])
@@ -102,8 +108,13 @@ def run(query: str):
     refined_query = problem.get("refined_query", query)
     console.print(Panel.fit(f"🧩 Refined Query: {refined_query}", style="bold green"))
 
+    # 1.5️⃣ Query builder — generate Crossref-compatible Boolean query
+    query_built = query_builder_agent(refined_query=refined_query)
+    search_query = query_built.get("search_query", refined_query)
+    console.print(Panel.fit(f"🧱 Search Query: {search_query}", style="bold cyan"))
+
     # 2️⃣ Data retrieval
-    retrieved = retrieval_agent(refined_query=refined_query)
+    retrieved = retrieval_agent(refined_query=search_query)
     papers = retrieved.get("papers", [])
     console.print(Panel.fit(f"📄 Retrieved {len(papers)} papers", style="bold yellow"))
 
